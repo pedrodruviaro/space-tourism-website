@@ -98,7 +98,6 @@ select {
 /* links */
 a {
     text-decoration: none;
-    color: inherit;
 }
 
 /* remove animations (if turn off by user) */
@@ -248,4 +247,36 @@ a {
     margin-right: 0.5em;
     font-weight: 700;
     color: hsl(var(--clr-white) / 0.25);
+}
+
+/* ---------------------------- */
+/* COMPONENTS                   */
+/* ---------------------------- */
+
+.large-button {
+    position: relative;
+    aspect-ratio: 1;
+    /* z-index: 1; */
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    padding: 0 2em;
+}
+
+.large-button::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(var(--clr-white) / 0.15);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 500ms linear, transform 650ms ease-in-out;
+}
+
+.large-button:hover::after,
+.large-button:focus::after {
+    transform: scale(1.5);
+    opacity: 1;
 }
