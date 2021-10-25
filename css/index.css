@@ -135,6 +135,19 @@ a {
     padding-inline: 2em;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: 2em repeat(2, minmax(0, 40rem)) 2em;
+}
+
+.grid-container > *:first-child {
+    grid-column: 2;
+}
+
+.grid-container > *:last-child {
+    grid-column: 3;
+}
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -256,9 +269,8 @@ a {
 .large-button {
     position: relative;
     aspect-ratio: 1;
-    /* z-index: 1; */
     border-radius: 50%;
-    display: grid;
+    display: inline-grid;
     place-items: center;
     padding: 0 2em;
 }
@@ -279,4 +291,82 @@ a {
 .large-button:focus::after {
     transform: scale(1.5);
     opacity: 1;
+}
+
+.primary-navigation {
+    --gap: 8rem;
+    --underline-gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.primary-navigation a > span {
+    font-weight: 700;
+    margin-right: 0.5rem;
+}
+
+.underline-indicators > * {
+    cursor: pointer;
+    padding: var(--underline-gap, 1rem) 0;
+    border: 0;
+    border-bottom: 0.2rem solid hsl(var(--clr-white) / 0);
+}
+
+.underline-indicators > *:hover,
+.underline-indicators > *:focus {
+    border-color: hsl(var(--clr-white) / 0.5);
+}
+
+.underline-indicators > .active,
+.underline-indicators > [aria-selected="true"] {
+    color: hsl(var(--clr-light) / 1);
+    border-color: hsl(var(--clr-white) / 1);
+}
+
+.tab-list {
+    --gap: 2rem;
+}
+
+.dot-indicators > * {
+    cursor: pointer;
+    border: 0;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    padding: 0.5em;
+    background-color: hsl(var(--clr-light) / 0.25);
+}
+
+.dot-indicators > *:hover,
+.dot-indicators > *:focus {
+    background-color: hsl(var(--clr-light) / 0.5);
+}
+
+.dot-indicators > [aria-selected="true"] {
+    border-color: hsl(var(--clr-white) / 1);
+}
+
+.number-indicatos > * {
+    cursor: pointer;
+    border: 0;
+    border-radius: 50%;
+    border: 1px solid hsl(var(--clr-white) / 0.25);
+    background-color: transparent;
+    color: hsl(var(--clr-white) / 1);
+
+    display: grid;
+    place-content: center;
+    padding: 1em;
+    font-size: var(--fs-300);
+}
+
+.number-indicatos > *:hover,
+.number-indicatos > *:focus {
+    border-color: hsl(var(--clr-white) / 0.5);
+}
+
+.number-indicators > [aria-selected="true"] {
+    border-color: hsl(var(--clr-white) / 1);
+    background-color: hsl(var(--clr-white) / 1);
+    color: hsl(var(--clr-dark));
 }
